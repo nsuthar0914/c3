@@ -4082,6 +4082,9 @@ c3_chart_fn.hide = function (targetIds, options) {
     if (options.withLegend) {
         $$.hideLegend(targetIds);
     }
+    c3_chart_internal_fn.getArc = function (d, withoutUpdate, force) {
+        return force || (this.config && this.isArcType(d.data)) ? this.svgArc(d, withoutUpdate) : "M 0 0";
+    };
 
     $$.redraw({ withUpdateOrgXDomain: true, withUpdateXDomain: true, withLegend: true });
 };
